@@ -19,11 +19,11 @@
 
 		$("#playerInput").on("change", function(){
 			var playerChoice = $("#playerInput").val();
+			var result = compare(playerChoice, computerChoice);
 
-			// For debugging:
-			console.log("Player chooses: " + playerChoice);
-			console.log("Computer chooses: " + computerChoice);
-			console.log("Result: " + compare(playerChoice, computerChoice));	
+			$("#playerChoice").text("Player chose: " + playerChoice);
+			$("#computerChoice").text("Computer chose: " + computerChoice);
+			$("#result").text("Result: " + result);
 		});	
 
 		function compare (player, computer){
@@ -77,8 +77,12 @@
       <div class="starter-template">
         <h1>Rock Paper Fireball</h1>
         <p class="lead">Do you choose rock, paper or fireball?</p>
-        <input type = "text" id="playerInput">
-
+        <input type="text" id="playerInput">
+        <br><br>
+        <p id="playerChoice"></p>
+        <p id="computerChoice"></p>
+        <p id="result"></p>
+		
       </div>
 
     </div><!-- /.container -->
