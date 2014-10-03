@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rock Paper Fireball</title>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		var playerChoice = prompt ("Do you choose rock, paper or fireball?");
+		var computerChoice = Math.random();
+		if (computerChoice <= 0.33){
+		  computerChoice = "rock";
+		} else if (computerChoice <=0.66 ){
+		  computerChoice = "paper";
+		} else {
+		  computerChoice = "fireball";
+		}
+
+		function compare (player, computer){
+			var result;
+			switch (player){
+				case "rock":
+					if (computer === "rock"){
+						result = "This result is a tie!";
+					}
+					else if(computer === "paper"){
+						result = "paper wins";
+					}
+					else if(computer === "fireball"){
+						result = "rock wins";
+					}
+					break;
+				case "paper":
+					if (computer === "rock"){
+						result = "paper wins";
+					}
+					else if(computer === "paper"){
+						result = "This result is a tie!";
+					}
+					else if(computer === "fireball"){
+						result = "fireball wins";
+					}
+					break;
+				case "fireball":
+					if (computer === "rock"){
+						result = "rock wins";
+					}
+					else if(computer === "paper"){
+						result = "fireball wins";
+					}
+					else if(computer === "fireball"){
+						result = "This result is a tie!";
+					}
+					break;
+			}
+			return result;
+		}
+
+		// For debugging:
+		console.log("Player chooses: " + playerChoice);
+		console.log("Computer chooses: " + computerChoice);
+		console.log(compare(playerChoice, computerChoice));
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
