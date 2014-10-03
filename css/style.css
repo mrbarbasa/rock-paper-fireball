@@ -1,0 +1,21 @@
+h1 {
+	font-family: Arial; 
+	font-size: 40px; 
+	color: #1570CC;
+}
+
+body {
+	background-color: #AAE3BE;
+}
+
+#rock {
+	color: gray;
+}
+
+#paper {
+	color: yellow;
+}
+
+#fireball {
+	color: red;
+}

@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Rock Paper Fireball</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script>
 	$(document).ready(function() {
@@ -16,15 +17,6 @@
 		} else {
 		  computerChoice = "fireball";
 		}
-
-		$("#playerInput").on("change", function(){
-			var playerChoice = $("#playerInput").val();
-			var result = compare(playerChoice, computerChoice);
-
-			$("#playerChoice").text("Player chose: " + playerChoice);
-			$("#computerChoice").text("Computer chose: " + computerChoice);
-			$("#result").text("Result: " + result);
-		});	
 
 		function compare (player, computer){
 			var result;
@@ -66,6 +58,31 @@
 			return result;
 		}
 
+		function generateOutput() {
+			var playerChoice = $("#playerInput").val();
+			var result = compare(playerChoice, computerChoice);
+
+			$("#playerChoice").text("Player chose: " + playerChoice);
+			$("#computerChoice").text("Computer chose: " + computerChoice);
+			$("#result").text("Result: " + result);
+		}
+
+		// Runs when user presses Enter on keyboard
+		$("#playerInput").on("change", generateOutput);
+
+		// Runs when user clicks "Submit choice" button
+		$("#submitChoice").on("click", generateOutput);
+
+		// Clears the result and player input text box
+		$("#replay").on("click", function() {
+			$("#playerInput").val("");
+			$("#playerChoice").text("");
+			$("#computerChoice").text("");
+			$("#result").text("");
+		});
+
+
+
 		
 	});
 	</script>
@@ -75,14 +92,19 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Rock Paper Fireball</h1>
+        <h1>
+        	<span id="rock">Rock</span>
+        	<span id="paper">Paper</span>
+        	<span id="fireball">Fireball</span>
+        </h1>
         <p class="lead">Do you choose rock, paper or fireball?</p>
         <input type="text" id="playerInput">
+        <button id="submitChoice">Submit choice</button>
+        <button id="replay">Play again!</button>
         <br><br>
         <p id="playerChoice"></p>
         <p id="computerChoice"></p>
         <p id="result"></p>
-		
       </div>
 
     </div><!-- /.container -->
