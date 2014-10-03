@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Rock Paper Fireball</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script>
 	$(document).ready(function() {
-		var playerChoice = prompt ("Do you choose rock, paper or fireball?");
+		// var playerChoice = prompt ("Do you choose rock, paper or fireball?");
 		var computerChoice = Math.random();
 		if (computerChoice <= 0.33){
 		  computerChoice = "rock";
@@ -15,6 +16,15 @@
 		} else {
 		  computerChoice = "fireball";
 		}
+
+		$("#playerInput").on("change", function(){
+			var playerChoice = $("#playerInput").val();
+
+			// For debugging:
+			console.log("Player chooses: " + playerChoice);
+			console.log("Computer chooses: " + computerChoice);
+			console.log("Result: " + compare(playerChoice, computerChoice));	
+		});	
 
 		function compare (player, computer){
 			var result;
@@ -56,14 +66,22 @@
 			return result;
 		}
 
-		// For debugging:
-		console.log("Player chooses: " + playerChoice);
-		console.log("Computer chooses: " + computerChoice);
-		console.log(compare(playerChoice, computerChoice));
+		
 	});
 	</script>
 </head>
 <body>
-	
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Rock Paper Fireball</h1>
+        <p class="lead">Do you choose rock, paper or fireball?</p>
+        <input type = "text" id="playerInput">
+
+      </div>
+
+    </div><!-- /.container -->
+
 </body>
 </html>
