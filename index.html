@@ -1,113 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Rock Paper Fireball</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script>
-	$(document).ready(function() {
-		// var playerChoice = prompt ("Do you choose rock, paper or fireball?");
-		var computerChoice = Math.random();
-		if (computerChoice <= 0.33){
-		  computerChoice = "rock";
-		} else if (computerChoice <=0.66 ){
-		  computerChoice = "paper";
-		} else {
-		  computerChoice = "fireball";
-		}
-
-		function compare (player, computer){
-			var result;
-			switch (player){
-				case "rock":
-					if (computer === "rock"){
-						result = "This result is a tie!";
-					}
-					else if(computer === "paper"){
-						result = "paper wins";
-					}
-					else if(computer === "fireball"){
-						result = "rock wins";
-					}
-					break;
-				case "paper":
-					if (computer === "rock"){
-						result = "paper wins";
-					}
-					else if(computer === "paper"){
-						result = "This result is a tie!";
-					}
-					else if(computer === "fireball"){
-						result = "fireball wins";
-					}
-					break;
-				case "fireball":
-					if (computer === "rock"){
-						result = "rock wins";
-					}
-					else if(computer === "paper"){
-						result = "fireball wins";
-					}
-					else if(computer === "fireball"){
-						result = "This result is a tie!";
-					}
-					break;
-			}
-			return result;
-		}
-
-		function generateOutput() {
-			var playerChoice = $("#playerInput").val();
-			var result = compare(playerChoice, computerChoice);
-
-			$("#playerChoice").text("Player chose: " + playerChoice);
-			$("#computerChoice").text("Computer chose: " + computerChoice);
-			$("#result").text("Result: " + result);
-		}
-
-		// Runs when user presses Enter on keyboard
-		$("#playerInput").on("change", generateOutput);
-
-		// Runs when user clicks "Submit choice" button
-		$("#submitChoice").on("click", generateOutput);
-
-		// Clears the result and player input text box
-		$("#replay").on("click", function() {
-			$("#playerInput").val("");
-			$("#playerChoice").text("");
-			$("#computerChoice").text("");
-			$("#result").text("");
-		});
-
-
-
-		
-	});
-	</script>
-</head>
-<body>
-
+	<head>
+		<meta charset="UTF-8">
+		<title>Rock Paper Fireball</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/app.js"></script>
+	</head>
+	<body>
     <div class="container">
 
       <div class="starter-template">
         <h1>
-        	<span id="rock">Rock</span>
-        	<span id="paper">Paper</span>
-        	<span id="fireball">Fireball</span>
+        	<span class="rock">Rock</span>
+        	<span class="paper">Paper</span>
+        	<span class="fireball">Fireball</span>
         </h1>
-        <p class="lead">Do you choose rock, paper or fireball?</p>
-        <input type="text" id="playerInput">
-        <button id="submitChoice">Submit choice</button>
-        <button id="replay">Play again!</button>
+        <p class="lead">Choose your weapon:</p>
+        <button class="btn-primary" id="rockChoice">ROCK</button>
+        <button class="btn-success" id="paperChoice">PAPER</button>
+        <button class="btn-danger" id="fireballChoice">FIREBALL</button>
+        <button id="replay">RESTART</button>
         <br><br>
-        <p id="playerChoice"></p>
-        <p id="computerChoice"></p>
-        <p id="result"></p>
+        <h3>Player chose: <span id="playerChoice"></span></h3>
+        <h3>Computer chose: <span id="computerChoice"></span></h3>
+        <h2 id="result"></h2>
       </div>
-
-    </div><!-- /.container -->
-
-</body>
+    </div>
+	</body>
 </html>
